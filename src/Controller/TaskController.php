@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class TaskController extends AbstractController
 {
@@ -25,16 +26,18 @@ class TaskController extends AbstractController
     /**
      * @Route("/tasks/create", name="task_create")
      * @param Request $request
+     * @param UserInterface $user
      * @return RedirectResponse|Response
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, UserInterface $user)
     {
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            $task->setUser($user);
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($task);
@@ -60,7 +63,7 @@ class TaskController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'La tâche a bien été modifiée.');
@@ -92,15 +95,22 @@ class TaskController extends AbstractController
     /**
      * @Route("/tasks/{id}/delete", name="task_delete")
      * @param Task $task
+     * @param UserInterface $user
      * @return RedirectResponse
      */
-    public function deleteTaskAction(Task $task): RedirectResponse
+    public function deleteTaskAction(Task $task, UserInterface $user): RedirectResponse
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($task);
-        $em->flush();
+        if ($user === $task->getUser() or $user->getRoles() === 'ROLE_ADMIN')
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($task);
+            $em->flush();
 
-        $this->addFlash('success', 'La tâche a bien été supprimée.');
+            $this->addFlash('success', 'La tâche a bien été supprimée.');
+        } else {
+            $this->addFlash('error', 'Vous ne pouvez pas supprimé cette tache !');
+        }
+
 
         return $this->redirectToRoute('task_list');
     }

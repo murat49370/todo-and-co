@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\UserEditType;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -14,7 +15,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/users", name="user_list")
+     * @Route("/admin/users", name="user_list")
      */
     public function listAction(): Response
     {
@@ -22,7 +23,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/users/create", name="user_create")
+     * @Route("/admin/users/create", name="user_create")
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
      * @return RedirectResponse|Response
@@ -52,19 +53,20 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/users/{id}/edit", name="user_edit")
+     * @Route("/admin/users/{id}/edit", name="user_edit")
      * @param User $user
      * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
      * @return RedirectResponse|Response
      */
-    public function editAction(User $user, Request $request)
+    public function editAction(User $user, Request $request, UserPasswordEncoderInterface $encoder)
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserEditType::class, $user);
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPassword());
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
 
             $this->getDoctrine()->getManager()->flush();
