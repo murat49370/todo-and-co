@@ -54,7 +54,7 @@ class PageControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
     }
 
-    public function testLetAuthenticatedUserNBotAccessAddUser()
+    public function testLetAuthenticatedUserNotAccessAddUser()
     {
         $client = static::createClient();
         $this->loadFixtures([UserFixtures::class]);

@@ -4,6 +4,7 @@
     {% if error %}
         <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
+    <h1>Se connecter</h1>
 
     <form action="{{ path('login_check') }}" method="post">
         <label for="username">Nom d'utilisateur :</label>
