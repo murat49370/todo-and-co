@@ -4,7 +4,7 @@
 namespace App\Tests\Controller;
 
 
-use App\DataFixtures\UserFixtures;
+use App\DataFixtures\AppFixtures;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -40,7 +40,7 @@ class SecurityControllerTest extends WebTestCase
     public function testSuccessfullLogin()
     {
         $client = static::createClient();
-        $this->loadFixtures([UserFixtures::class]);
+        $this->loadFixtures([AppFixtures::class]);
         $crawler = $client->request('GET', '/login');
         $form = $crawler->selectButton('Se connecter')->form([
             '_username' => 'user1',
@@ -52,6 +52,29 @@ class SecurityControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h1', 'Bienvenue sur Todo List, l\'application vous permettant de gérer l\'ensemble de vos tâches sans effort !');
 
     }
+
+    public function testLogout()
+    {
+        $client = static::createClient();
+        $this->loadFixtures([AppFixtures::class]);
+        $crawler = $client->request('GET', '/login');
+        $form = $crawler->selectButton('Se connecter')->form([
+            '_username' => 'user1',
+            '_password' => '123456'
+        ]);
+        $client->submit($form);
+        $this->assertResponseRedirects('');
+        $client->followRedirect();
+        $this->assertSelectorTextContains('h1', 'Bienvenue sur Todo List, l\'application vous permettant de gérer l\'ensemble de vos tâches sans effort !');
+        $client->clickLink('Se déconnecter');
+        $this->assertResponseRedirects('');
+        $client->followRedirect();
+
+    }
+
+
+
+
 
 
 
