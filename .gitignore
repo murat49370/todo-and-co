@@ -15,6 +15,13 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
+###> app todo ###
+.idea/
+/data/
+###< app todo ###
+
+
+
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache

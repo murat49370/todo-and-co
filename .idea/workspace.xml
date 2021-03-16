@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f13b1cc1-84a3-49b8-b4e4-9e4ec46ae364" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Security/AppAuthenticator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Controller/PageControllerTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/NeedLogin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/php/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/php/php.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/vhosts/project.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/SecurityControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Repository/UserRepositoryTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Repository/UserRepositoryTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Repository/UserRepositoryTestFixtures.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +179,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -195,6 +189,8 @@
       <recent name="C:\Users\Murat\Desktop\todo-and-co\src\Form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Murat\Desktop\todo-and-co\docker\php" />
+      <recent name="C:\Users\Murat\Desktop\todo-and-co" />
       <recent name="C:\Users\Murat\Desktop\todo-and-co\tests\Repository" />
     </key>
   </component>
@@ -243,7 +239,17 @@
       <workItem from="1614672901151" duration="9355000" />
       <workItem from="1614697127828" duration="3440000" />
       <workItem from="1614756669631" duration="5031000" />
-      <workItem from="1615186530316" duration="5420000" />
+      <workItem from="1615186530316" duration="8927000" />
+      <workItem from="1615449961615" duration="375000" />
+      <workItem from="1615451145610" duration="1077000" />
+      <workItem from="1615452801122" duration="13212000" />
+      <workItem from="1615805612421" duration="1826000" />
+      <workItem from="1615882051476" duration="1062000" />
+      <workItem from="1615883284071" duration="3669000" />
+      <workItem from="1615891951643" duration="1028000" />
+      <workItem from="1615893147387" duration="824000" />
+      <workItem from="1615895139761" duration="829000" />
+      <workItem from="1615903175619" duration="109000" />
     </task>
     <servers />
   </component>

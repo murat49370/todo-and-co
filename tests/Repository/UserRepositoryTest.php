@@ -4,7 +4,7 @@
 namespace App\Tests\Repository;
 
 
-use App\DataFixtures\UserFixtures;
+use App\DataFixtures\AppFixtures;
 use App\Repository\UserRepository;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -16,7 +16,7 @@ class UserRepositoryTest extends KernelTestCase
     public function testCount()
     {
         self::bootKernel();
-        $this->loadFixtures([UserFixtures::class]);
+        $this->loadFixtures([AppFixtures::class]);
         $users = self::$container->get(UserRepository::class)->count([]);
         $this->assertEquals(11, $users);
     }
