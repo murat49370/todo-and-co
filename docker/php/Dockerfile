@@ -41,6 +41,15 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
 RUN curl -sSk https://getcomposer.org/installer | php -- --disable-tls && \
     mv composer.phar /usr/local/bin/composer
 
+RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
+    && architecture=$(case $(uname -m) in i386 | i686 | x86) echo "i386" ;; x86_64 | amd64) echo "amd64" ;; aarch64 | arm64 | armv8) echo "arm64" ;; *) echo "amd64" ;; esac) \
+    && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/$architecture/$version \
+    && mkdir -p /tmp/blackfire \
+    && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire \
+    && mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get ('extension_dir');")/blackfire.so \
+    && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
+    && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
+
 # On créé un utilisateur avec le même gid/uid que votre local
 # cela va permettre que les fichiers qui sont créés dans le contenaire auront vos droits
 RUN addgroup --system murat-linux --gid 1000 && adduser --system murat-linux --uid 1000 --ingroup murat-linux

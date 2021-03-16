@@ -31,3 +31,13 @@ services:
     ports:
       - "1025:25"
       - "1080:1080"
+
+  blackfire:
+    image: blackfire/blackfire
+    ports: [ "8707" ]
+    environment:
+      # Exposes BLACKFIRE_* environment variables from the host
+      BLACKFIRE_SERVER_ID: $BLACKFIRE_SERVER_ID
+      BLACKFIRE_SERVER_TOKEN: $BLACKFIRE_SERVER_TOKEN
+      BLACKFIRE_CLIENT_ID: $BLACKFIRE_CLIENT_ID
+      BLACKFIRE_CLIENT_TOKEN: $BLACKFIRE_CLIENT_TOKEN
