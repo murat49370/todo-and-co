@@ -47,10 +47,21 @@ class Task
      */
     private ?user $user;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     */
+    private ?\DateTimeInterface $endDate;
+
     public function __construct()
     {
-        $this->createdAt = new \Datetime();
+        $this->createdAt = new \Datetime('now');
         $this->isDone = false;
+    }
+
+    public function getCurrentDate(): \DateTime
+    {
+        return new \DateTime();
     }
 
     public function getId(): int
@@ -109,4 +120,28 @@ class Task
 
         return $this;
     }
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * @param \DateTimeInterface|null $endDate
+     * @return Task
+     */
+    public function setEndDate(?\DateTimeInterface $endDate): Task
+    {
+        $this->endDate = $endDate;
+        return $this;
+    }
+
+
+
+
 }
+
+
