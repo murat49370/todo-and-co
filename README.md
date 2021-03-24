@@ -1,6 +1,8 @@
 # ToDo & Co
 Amélioration d'une application existante dans le cadre de ma formation développeur PHP / Symfony.
 
+<a href="https://codeclimate.com/github/murat49370/todo-and-co/maintainability"><img src="https://api.codeclimate.com/v1/badges/395dad1acb5de7a3af7c/maintainability" /></a>
+
 
 ## Installation
 1. Clonez ou téléchargez le repository GitHub sur votre machine :
