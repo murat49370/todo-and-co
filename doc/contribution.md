@@ -42,9 +42,13 @@ git push origin [branch name]
 ## Pull Request
 Ouvrez une nouvelle demande de "Pull Request".
 
-Normes et bonne pratique
+## Normes et bonne pratique
 Veuillez respecter la règle PSR, en particulier celles-ci :
 *   [PSR-1 : Basic Coding Standard](https://gist.github.com/npotier/d5a13245ad9cd2e92fa9dec19baf0e9a)
 *   [PSR-2 : Coding Style Guide](https://gist.github.com/npotier/593b645025173ef8bbb5c59d3fd455fa)
 *   [PSR-4 : Autoloader](https://www.php-fig.org/psr/psr-4/)
 *   [Symfony best pratices](https://symfony.com/doc/4.4/best_practices/index.html) for 4.4 version 
+
+
+Veiller à toujour contrôler la qualité du code avec CodeClimate pour conserver un "A" :
+*   [Codeclimate.com](https://codeclimate.com/)

@@ -19,19 +19,18 @@ class TaskType extends AbstractType
             //->add('createdAt')
             ->add('title')
             ->add('content', TextareaType::class)
-            ->add('endDate', DateTimeType::class, [
+            ->add('endDate', DateType::class, [
                 'attr' => ['class' => 'form-control js-datepicker'],
                 'label' => 'date de fin : ',
                 'required' => false,
                 'widget' => 'single_text',
                 'html5' => false,
-                'format' => 'dd-mm-yyyy',
                 'constraints' => [
                     new Assert\GreaterThan([
-                        'value' => 'today',
-                        'message' => 'la date ne peux pas être inférieur a aujourdhuit'
+                        'value' => "today",
+                        'message' => "La date ne peux pas être inférieur à aujourd'hui"
                     ]),
-                                    ]
+                                    ],
             ])
             //->add('isDone')
         ;
