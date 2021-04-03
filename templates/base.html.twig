@@ -13,6 +13,8 @@
         <!-- Bootstrap Core CSS -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
+
+
         <!-- Bootstrap DatePicker CSS -->
         <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet">
 
@@ -40,7 +42,7 @@
 
         <!-- Page Content -->
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-bottom: 20px">
                 {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('user_create') }}" class="btn btn-primary">Créer un utilisateur</a>
                     <a href="{{ path('user_list') }}" class="btn btn-success">Liste des utilisateurs</a>
