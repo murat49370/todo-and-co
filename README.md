@@ -9,9 +9,15 @@ Amélioration d'une application existante dans le cadre de ma formation dévelop
 ```
     git clone https://github.com/murat49370/todo-and-co.git
 ```
-2. Configurez vos variables d'environnement tel que la connexion à la base de données dans le fichier `.env.local` qui devra être crée à la racine du projet en réalisant une copie du fichier `.env` ainsi que la connexion à la base de données de test dans le fichier `env.test`.
 
-3. Téléchargez et installez les dépendances du projet avec [Composer](https://getcomposer.org/download/) :
+2. Déplacer vous dans le dossier :
+```
+    cd todo-and-co
+```
+
+3. Configurez vos variables d'environnement tel que la connexion à la base de données dans le fichier `.env.local` qui devra être crée à la racine du projet en réalisant une copie du fichier `.env` ainsi que la connexion à la base de données de test dans le fichier `env.test`.
+
+4. Téléchargez et installez les dépendances du projet avec [Composer](https://getcomposer.org/download/) :
 ```
     composer install
 ```
@@ -19,9 +25,9 @@ Amélioration d'une application existante dans le cadre de ma formation dévelop
 ```
     php bin/console doctrine:database:create
 ```
-5. Créez les différentes tables de la base de données en appliquant les migrations :
+5. Créez les différentes tables de la base de données :
 ```
-    php bin/console doctrine:migrations:migrate
+    php bin/console doctrine:schema:update --force
 ```
 6. (Optionnel) Installez les fixtures pour avoir une démo de données fictives en développement :
 ```
